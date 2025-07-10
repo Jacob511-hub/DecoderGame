@@ -2,7 +2,7 @@ import React from "react";
 
 const CodeInput: React.FC = () => {
     return (
-        <div/>
+        <div className="code-input"/>
     )
 };
 
