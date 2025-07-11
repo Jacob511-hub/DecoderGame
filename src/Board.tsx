@@ -1,17 +1,21 @@
 import React from "react";
-import GuessColumn from "./GuessColumn";
+import OptionsColumn from "./OptionsColumn";
+import FullColumn from "./FullColumn";
+import AnswerColumn from "./AnswerColumn";
 
 const Board: React.FC = () => {
     return (
         <div className="board">
-            <GuessColumn/>
-            <GuessColumn/>
-            <GuessColumn/>
-            <GuessColumn/>
-            <GuessColumn/>
-            <GuessColumn/>
-            <GuessColumn/>
-            <GuessColumn/>
+            <OptionsColumn/>
+            <FullColumn/>
+            <FullColumn/>
+            <FullColumn/>
+            <FullColumn/>
+            <FullColumn/>
+            <FullColumn/>
+            <FullColumn/>
+            <FullColumn/>
+            <AnswerColumn/>
         </div>
     )
 };
