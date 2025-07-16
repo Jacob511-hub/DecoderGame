@@ -1,8 +1,14 @@
 import React from "react";
 
-const CodeInput: React.FC<{ src: string; }> = ({ src }) => {
+interface CodeInputProps {
+    src: string;
+    onClick?: () => void;
+    isSelected?: boolean;
+}
+
+const CodeInput: React.FC<CodeInputProps> = ({ src, onClick, isSelected }) => {
     return (
-        <div className="code-input">
+        <div className={`code-input ${isSelected ? "selected" : ""}`} onClick={onClick}>
             <div
                 style={{
                     backgroundImage: src,

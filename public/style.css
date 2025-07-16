@@ -29,6 +29,10 @@
   cursor: pointer;
 }
 
+.selected {
+  border: 2px solid black;
+}
+
 .options-column {
   display: flex;
   flex-direction: column;
