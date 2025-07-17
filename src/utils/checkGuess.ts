@@ -3,19 +3,23 @@ export function checkGuess(guess: number[], answer: number[]): ("green" | "yello
     const guessUsed = Array(4).fill(false);
     const answerUsed = Array(4).fill(false);
 
+    let greenCount = 0;
+    let yellowCount = 0;
+
     for (let i = 0; i < 4; i++) {
         if (guess[i] === answer[i]) {
-            result[i] = "green";
+            greenCount++;
             guessUsed[i] = true;
             answerUsed[i] = true;
         }
     }
 
     for (let i = 0; i < 4; i++) {
-        if (result[i] === "green") continue;
+        if (guessUsed[i]) continue;
+
         for (let j = 0; j < 4; j++) {
             if (!answerUsed[j] && guess[i] === answer[j]) {
-                result[i] = "yellow";
+                yellowCount++;
                 guessUsed[i] = true;
                 answerUsed[j] = true;
                 break;
@@ -23,5 +27,11 @@ export function checkGuess(guess: number[], answer: number[]): ("green" | "yello
         }
     }
 
-    return result;
+    let redCount = 4 - greenCount - yellowCount;
+
+    return [
+        ...Array(greenCount).fill("green"),
+        ...Array(yellowCount).fill("yellow"),
+        ...Array(redCount).fill("red"),
+    ];
 }
