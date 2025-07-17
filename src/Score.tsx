@@ -1,15 +1,18 @@
 import React from "react";
 import ScoreLight from "./ScoreLight";
 
-const Score: React.FC = () => {
+interface ScoreProps {
+    result: ("green" | "yellow" | "red" | "black")[];
+}
+
+const Score: React.FC<ScoreProps> = ({ result }) => {
     return (
         <div className="score">
-            <ScoreLight />
-            <ScoreLight />
-            <ScoreLight />
-            <ScoreLight />
+            {result.map((color, i) => (
+                <ScoreLight key={i} color={color} />
+            ))}
         </div>
-    )
+    );
 };
 
 export default Score;

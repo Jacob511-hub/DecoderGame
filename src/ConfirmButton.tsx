@@ -1,8 +1,12 @@
 import React from "react";
 
-const ConfirmButton: React.FC = () => {
+interface ConfirmButtonProps {
+    onClick: () => void;
+}
+
+const ConfirmButton: React.FC<ConfirmButtonProps> = ({ onClick }) => {
     return (
-        <div className="code-input">
+        <div className="code-input" onClick={onClick}>
             <div
                 style={{
                     backgroundImage: "url(/images/Confirm.png)",
