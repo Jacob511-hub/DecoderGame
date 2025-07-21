@@ -10,13 +10,17 @@ const FullColumn: React.FC = () => {
     const [scoreResult, setScoreResult] = useState<("green" | "yellow" | "red" | "black")[]>(["black", "black", "black", "black"]);
     const colorSetterRef = useRef<((colorId: number) => void) | null>(null);
 
-    const { AnswerArray } = useAnswerArray();
+    const { AnswerArray, setRevealAnswer } = useAnswerArray();
 
     const handleConfirm = () => {
         if (guess.includes(null)) return;
         const filteredGuess = guess as number[];
         const result = checkGuess(filteredGuess, AnswerArray);
         setScoreResult(result);
+
+        if (result.every((color) => color === "green")) {
+            setRevealAnswer(true);
+        }
     };
 
     return (

@@ -3,6 +3,8 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 type AnswerArrayContextType = {
   AnswerArray: number[];
   generateAnswerArray: () => void;
+  revealAnswer: boolean;
+  setRevealAnswer: (reveal: boolean) => void;
 };
 
 const AnswerArrayContext = createContext<AnswerArrayContextType | undefined>(undefined);
@@ -13,13 +15,15 @@ const getAnswerArray = (): number[] => {
 
 export const AnswerArrayProvider = ({ children }: { children: ReactNode }) => {
   const [AnswerArray, setAnswerArray] = useState<number[]>(getAnswerArray());
+  const [revealAnswer, setRevealAnswer] = useState<boolean>(false);
 
   const generateAnswerArray = () => {
     setAnswerArray(getAnswerArray());
+    setRevealAnswer(false);
   };
 
   return (
-    <AnswerArrayContext.Provider value={{ AnswerArray, generateAnswerArray }}>
+    <AnswerArrayContext.Provider value={{ AnswerArray, generateAnswerArray, revealAnswer, setRevealAnswer }}>
       {children}
     </AnswerArrayContext.Provider>
   );
