@@ -55,6 +55,16 @@
   margin: 1%;
 }
 
+.full-column.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.full-column.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .guess-column {
   display: flex;
   flex-direction: column;

@@ -15,9 +15,10 @@ const COLOR_IMAGES = [
 interface GuessColumnProps {
     onGuessChange: (guess: (number | null)[]) => void;
     registerColorSetter: (setter: (colorId: number) => void) => void;
+    isDisabled?: boolean;
 }
 
-const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorSetter }) => {
+const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorSetter, isDisabled }) => {
     const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
     const [guessIds, setGuessIds] = useState<(number | null)[]>([null, null, null, null]);
 
@@ -39,8 +40,10 @@ const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorS
     };
 
     useEffect(() => {
-        registerColorSetter(setColorAtSelected);
-    }, [registerColorSetter]);
+        if (!isDisabled) {
+            registerColorSetter(setColorAtSelected);
+        }
+    }, [registerColorSetter, isDisabled]);
 
     return (
         <div className="guess-column">
@@ -48,7 +51,7 @@ const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorS
                 <CodeInput
                     key={i}
                     src={id === null ? DEFAULT_IMAGE : COLOR_IMAGES[id]}
-                    onClick={() => handleGuessClick(i)}
+                    onClick={!isDisabled ? () => handleGuessClick(i) : undefined}
                     isSelected={selectedIdx === i}
                 />
             ))}
