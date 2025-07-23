@@ -21,6 +21,8 @@ interface GuessColumnProps {
 const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorSetter, isDisabled }) => {
     const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
     const [guessIds, setGuessIds] = useState<(number | null)[]>([null, null, null, null]);
+    
+    const { onOptionClick } = React.useContext(OptionsContext);
 
     useEffect(() => {
         onGuessChange(guessIds);
@@ -36,7 +38,13 @@ const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorS
         const newGuesses = [...guessIds];
         newGuesses[selectedIdx] = colorId;
         setGuessIds(newGuesses);
-        setSelectedIdx(null);
+        
+        const nextIndex = selectedIdx + 1;
+        if (nextIndex < newGuesses.length) {
+            setSelectedIdx(nextIndex);
+        } else {
+            setSelectedIdx(null);
+        }
     };
 
     useEffect(() => {
@@ -45,7 +53,27 @@ const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorS
         }
     }, [registerColorSetter, isDisabled]);
 
+    // Need to fix the initial selected index for first column
+    useEffect(() => {
+        if (!isDisabled) {
+            setSelectedIdx(0);
+        }
+    }, [isDisabled]);
+
+    useEffect(() => {
+        if (isDisabled) {
+            setSelectedIdx(null);
+        }
+    }, [isDisabled]);
+
+    useEffect(() => {
+        if (!isDisabled && onOptionClick) {
+            onOptionClick(setColorAtSelected);
+        }
+    }, [isDisabled, onOptionClick])
+
     return (
+        console.log(selectedIdx),
         <div className="guess-column">
             {guessIds.map((id, i) => (
                 <CodeInput
