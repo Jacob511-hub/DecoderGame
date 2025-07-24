@@ -12,11 +12,29 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  position: relative;
   background-color: gray;
   width: 80vw;
   aspect-ratio: 2;
   margin: auto;
   border-radius: 5% / 10%;
+}
+
+.start-game-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4%;
+  right: 1.5%;
+  width: 7%;
+  height: 9%;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .code-input {

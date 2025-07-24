@@ -21,8 +21,6 @@ interface GuessColumnProps {
 const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorSetter, isDisabled }) => {
     const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
     const [guessIds, setGuessIds] = useState<(number | null)[]>([null, null, null, null]);
-    
-    const { onOptionClick } = React.useContext(OptionsContext);
 
     useEffect(() => {
         onGuessChange(guessIds);
@@ -66,14 +64,7 @@ const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorS
         }
     }, [isDisabled]);
 
-    useEffect(() => {
-        if (!isDisabled && onOptionClick) {
-            onOptionClick(setColorAtSelected);
-        }
-    }, [isDisabled, onOptionClick])
-
     return (
-        console.log(selectedIdx),
         <div className="guess-column">
             {guessIds.map((id, i) => (
                 <CodeInput
