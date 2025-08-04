@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import OptionsColumn from "./OptionsColumn";
 import FullColumn from "./FullColumn";
 import AnswerColumn from "./AnswerColumn";
+import StartButton from "./StartButton";
 import { useAnswerArray } from "./AnswerArrayContext";
 import { OptionsContext, SetColorFunction } from "./OptionsContext";
 
@@ -36,9 +37,7 @@ const Board: React.FC = () => {
         >
             <div className="board">
                 {!gameStarted && (
-                    <div className="start-game-button" onClick={handleStartGame}>
-                        Start
-                    </div>
+                    <StartButton onClick={handleStartGame} />
                 )}
 
                 <OptionsColumn />
