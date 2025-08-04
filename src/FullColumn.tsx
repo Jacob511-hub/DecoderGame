@@ -12,7 +12,7 @@ interface FullColumnProps {
     onGuessConfirmed: (wasCorrect: boolean) => void;
 }
 
-const FullColumn: React.FC<FullColumnProps> = ({ isActive, isLockedIn, onGuessConfirmed }) => {
+const FullColumn: React.FC<FullColumnProps> = ({ index, isActive, isLockedIn, onGuessConfirmed }) => {
     const [guess, setGuess] = useState<(number | null)[]>([null, null, null, null]);
     const [scoreResult, setScoreResult] = useState<("green" | "yellow" | "red" | "black")[]>(["black", "black", "black", "black"]);
     const colorSetterRef = useRef<((colorId: number) => void) | null>(null);
@@ -26,7 +26,7 @@ const FullColumn: React.FC<FullColumnProps> = ({ isActive, isLockedIn, onGuessCo
         setScoreResult(result);
 
         const isCorrect = result.every((color) => color === "green");
-        if (isCorrect) {
+        if (isCorrect || index === 7) {
             setRevealAnswer(true);
         }
 
