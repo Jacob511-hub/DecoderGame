@@ -51,7 +51,6 @@ const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorS
         }
     }, [registerColorSetter, isDisabled]);
 
-    // Need to fix the initial selected index for first column
     useEffect(() => {
         if (!isDisabled) {
             setSelectedIdx(0);

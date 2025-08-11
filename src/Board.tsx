@@ -28,6 +28,10 @@ const Board: React.FC = () => {
         setActiveColumn(0);
     };
 
+    const handleRestartGame = () => {
+        setGameStarted(false);
+    };
+
     return (
         <OptionsContext.Provider
             value={{
@@ -37,7 +41,10 @@ const Board: React.FC = () => {
         >
             <div className="board">
                 {!gameStarted && (
-                    <StartButton onClick={handleStartGame} />
+                    <StartButton text={"Start"} onClick={handleStartGame} />
+                )}
+                {gameStarted && (
+                    <StartButton text={"End"} onClick={handleRestartGame} />
                 )}
 
                 <OptionsColumn />

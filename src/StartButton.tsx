@@ -1,9 +1,14 @@
 import React from "react";
 
-const StartButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
+interface StartButtonProps {
+    text: string;
+    onClick: () => void;
+}
+
+const StartButton: React.FC<StartButtonProps> = ({ text, onClick }) => {
     return (
         <button className="start-game-button" onClick={onClick}>
-            Start
+            {text}
         </button>
     );
 };
