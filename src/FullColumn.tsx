@@ -10,14 +10,23 @@ interface FullColumnProps {
     isActive: boolean;
     isLockedIn: boolean;
     onGuessConfirmed: (wasCorrect: boolean) => void;
+    resetTrigger: number; // NEW
 }
 
-const FullColumn: React.FC<FullColumnProps> = ({ index, isActive, isLockedIn, onGuessConfirmed }) => {
+const FullColumn: React.FC<FullColumnProps> = ({ 
+    index, isActive, isLockedIn, onGuessConfirmed, resetTrigger 
+}) => {
     const [guess, setGuess] = useState<(number | null)[]>([null, null, null, null]);
     const [scoreResult, setScoreResult] = useState<("green" | "yellow" | "red" | "black")[]>(["black", "black", "black", "black"]);
     const colorSetterRef = useRef<((colorId: number) => void) | null>(null);
 
     const { AnswerArray, setRevealAnswer } = useAnswerArray();
+
+    // Reset state when resetTrigger changes
+    React.useEffect(() => {
+        setGuess([null, null, null, null]);
+        setScoreResult(["black", "black", "black", "black"]);
+    }, [resetTrigger]);
 
     const handleConfirm = () => {
         if (guess.includes(null)) return;
@@ -44,6 +53,7 @@ const FullColumn: React.FC<FullColumnProps> = ({ index, isActive, isLockedIn, on
                     if (isActive && !isLockedIn) colorSetterRef.current = setter;
                 }}
                 isDisabled={!isActive || isLockedIn}
+                resetTrigger={resetTrigger} // NEW
             />
             <ConfirmButton onClick={handleConfirm} disabled={!isActive || isLockedIn} />
         </div>

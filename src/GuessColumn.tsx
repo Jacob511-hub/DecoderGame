@@ -16,15 +16,21 @@ interface GuessColumnProps {
     onGuessChange: (guess: (number | null)[]) => void;
     registerColorSetter: (setter: (colorId: number) => void) => void;
     isDisabled?: boolean;
+    resetTrigger?: number; // NEW
 }
 
-const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorSetter, isDisabled }) => {
+const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorSetter, isDisabled, resetTrigger }) => {
     const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
     const [guessIds, setGuessIds] = useState<(number | null)[]>([null, null, null, null]);
 
     useEffect(() => {
         onGuessChange(guessIds);
     }, [guessIds, onGuessChange]);
+
+    useEffect(() => {
+        setGuessIds([null, null, null, null]);
+        setSelectedIdx(null);
+    }, [resetTrigger]);
 
     const handleGuessClick = (index: number) => {
         setSelectedIdx(index);

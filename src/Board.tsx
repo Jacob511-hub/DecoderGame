@@ -7,11 +7,11 @@ import { useAnswerArray } from "./AnswerArrayContext";
 import { OptionsContext, SetColorFunction } from "./OptionsContext";
 
 const Board: React.FC = () => {
-    const { AnswerArray } = useAnswerArray();
+    const { generateAnswerArray } = useAnswerArray();
     const [activeColumn, setActiveColumn] = useState(0);
     const [gameOver, setGameOver] = useState(false);
     const [gameStarted, setGameStarted] = useState(false);
-    console.log(AnswerArray);
+    const [resetCounter, setResetCounter] = useState(0); // NEW
 
     const currentSetterRef = useRef<SetColorFunction | null>(null);
 
@@ -26,10 +26,15 @@ const Board: React.FC = () => {
     const handleStartGame = () => {
         setGameStarted(true);
         setActiveColumn(0);
+        setGameOver(false);
     };
 
     const handleRestartGame = () => {
-        setGameStarted(false);
+        generateAnswerArray(); // new answer
+        setGameStarted(false); // turn off game
+        setGameOver(false);
+        setActiveColumn(0);
+        setResetCounter((c) => c + 1); // trigger reset in columns
     };
 
     return (
@@ -44,7 +49,7 @@ const Board: React.FC = () => {
                     <StartButton text={"Start"} onClick={handleStartGame} />
                 )}
                 {gameStarted && (
-                    <StartButton text={"End"} onClick={handleRestartGame} />
+                    <StartButton text={"Restart"} onClick={handleRestartGame} />
                 )}
 
                 <OptionsColumn />
@@ -53,6 +58,7 @@ const Board: React.FC = () => {
                     <FullColumn
                         key={i}
                         index={i}
+                        resetTrigger={resetCounter} // NEW
                         isActive={i === activeColumn && gameStarted && !gameOver}
                         isLockedIn={i < (activeColumn ?? 0) || (i === activeColumn && gameOver)}
                         onGuessConfirmed={(wasCorrect) => {
