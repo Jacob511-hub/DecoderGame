@@ -16,7 +16,7 @@ interface GuessColumnProps {
     onGuessChange: (guess: (number | null)[]) => void;
     registerColorSetter: (setter: (colorId: number) => void) => void;
     isDisabled?: boolean;
-    resetTrigger?: number; // NEW
+    resetTrigger?: number;
 }
 
 const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorSetter, isDisabled, resetTrigger }) => {
