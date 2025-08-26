@@ -143,12 +143,13 @@
   height: auto;
   aspect-ratio: 1 / 1;
   margin: 8%;
-  border-radius: 20%;
   cursor: pointer;
 }
 
 .selected {
-  border: 2px solid black;
+  border: 3px solid #d338be;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
 
 .options-column {
@@ -156,7 +157,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(156, 156, 156);
+  background-color: rgb(74, 74, 74);
   width: 7%;
   height: 90%;
   margin: 1%;
@@ -188,7 +189,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: rgb(156, 156, 156);
+  background-color: rgb(74, 74, 74);
   width: 100%;
   height: 60%;
   margin: 0;
@@ -199,7 +200,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  background-color: rgb(156, 156, 156);
+  background-color: rgb(74, 74, 74);
   width: 100%;
   aspect-ratio: 1;
   margin: 0;
@@ -219,7 +220,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(156, 156, 156);
+  background-color: rgb(74, 74, 74);
   width: 7%;
   height: 70%;
   margin: 1%;
