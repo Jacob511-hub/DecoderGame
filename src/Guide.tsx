@@ -8,7 +8,7 @@ const Guide: React.FC = () => {
                     src="/images/ScoreGreen.png"
                     style={{ height: "80%", marginRight: "10px" }}
                 />
-                <span style={{ color: "white", fontSize: "1.4em" }}>
+                <span className="guide-text">
                     Correct color in correct position
                 </span>
             </div>
@@ -17,7 +17,7 @@ const Guide: React.FC = () => {
                     src="/images/ScoreYellow.png"
                     style={{ height: "80%", marginRight: "10px" }}
                 />
-                <span style={{ color: "white", fontSize: "1.4em" }}>
+                <span className="guide-text">
                     Correct color in wrong position
                 </span>
             </div>
