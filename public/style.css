@@ -205,3 +205,56 @@
   margin: 1%;
   border-radius: 25% / 5%;
 }
+
+@media (max-width: 750px) {
+
+  :root {
+    --card-height: min(80vw * 1.5, 80vh);
+    --card-width: calc(var(--card-height) / 1.5);
+  }
+
+  .board {
+    flex-direction: column;
+  }
+
+  .options-column {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+    height: 7%;
+    margin: 1%;
+    border-radius: 5% /25%;
+  }
+
+  .code-input {
+    width: auto;
+    height: 80%;
+    margin: 0%;
+  }
+
+  .full-column {
+    flex-direction: row;
+    width: 90%;
+    height: 7%;
+  }
+
+  .guess-column {
+    flex-direction: row;
+    width: 60%;
+    height: 100%;
+    border-radius: 5% / 20%;
+  }
+
+  .score {
+    height: 100%;
+    width: auto;
+  }
+
+  .answer-column {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 70%;
+    height: 7%;
+    border-radius: 5% / 25%;
+  }
+}
