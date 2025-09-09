@@ -105,11 +105,11 @@
   justify-content: center;
   position: absolute;
   top: 4%;
-  right: 1.5%;
-  width: 7%;
-  height: 9%;
-  background-color: #5ad2f3;
+  right: 2.5%;
+  width: 5%;
+  aspect-ratio: 1 / 1;
   color: black;
+  font-size: max(2vw, 2vh);
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -256,5 +256,14 @@
     width: 70%;
     height: 7%;
     border-radius: 5% / 25%;
+  }
+
+  .start-game-button {
+    top: auto;
+    bottom: 1%;
+    right: 3%;
+    height: 7%;
+    width: auto;
+    aspect-ratio: 1 / 1;
   }
 }
