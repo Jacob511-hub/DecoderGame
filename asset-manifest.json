@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DecoderGame/static/css/main.e6c13ad2.css",
+    "main.js": "/DecoderGame/static/js/main.fb86dec1.js",
+    "static/js/453.96453769.chunk.js": "/DecoderGame/static/js/453.96453769.chunk.js",
+    "index.html": "/DecoderGame/index.html",
+    "main.e6c13ad2.css.map": "/DecoderGame/static/css/main.e6c13ad2.css.map",
+    "main.fb86dec1.js.map": "/DecoderGame/static/js/main.fb86dec1.js.map",
+    "453.96453769.chunk.js.map": "/DecoderGame/static/js/453.96453769.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.fb86dec1.js"
+  ]
+}

@@ -1,0 +1,272 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('/images/bg.png');
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-width: min(80vw, 80vh * 2);
+  --card-height: calc(var(--card-width) / 2);
+  --guide-height: calc(var(--card-width) / 15);
+  --guide-width: min(80vw, 80vh * 2);
+}
+
+.board {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  background-color: rgb(10, 10, 10);
+  width: var(--card-width);
+  height: var(--card-height);
+  min-height: var(--card-height);
+  border: 5px solid #ff5ddf;
+  border-radius: 5% / 10%;
+  overflow: hidden;
+}
+
+/* .board::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background-image: linear-gradient(
+    var(--rotate),
+    #ff5ddf,
+    #d338be
+  );
+  animation: spin 10s linear infinite;
+  z-index: 0;
+  padding: 0.8%;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+} */
+
+.guide {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  background-color: rgb(10, 10, 10);
+  width: var(--guide-width);
+  height: var(--guide-height);
+  border: 5px solid #5ddcff;
+  border-radius: 2% / 25%;
+}
+
+/* .guide::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #38b1d3
+  );
+  z-index: 0;
+  padding: 0.4%;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+} */
+
+.guide-text {
+  color: white;
+  font-size: min(2vw, 3vh);
+}
+
+.score-guide {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 80%;
+}
+
+.start-game-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4%;
+  right: 2.5%;
+  width: 5%;
+  aspect-ratio: 1 / 1;
+  color: black;
+  font-size: max(2vw, 2vh);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.code-input {
+  position: relative;
+  width: 80%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  margin: 8%;
+  cursor: pointer;
+}
+
+.selected {
+  border: 3px solid #d338be;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.options-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(74, 74, 74);
+  width: 7%;
+  height: 90%;
+  margin: 1%;
+  border-radius: 25% / 5%;
+}
+
+.full-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 7%;
+  height: 90%;
+  margin: 1%;
+}
+
+.full-column.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.full-column.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.guess-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(74, 74, 74);
+  width: 100%;
+  height: 60%;
+  margin: 0;
+  border-radius: 20% / 5%;
+}
+
+.score {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  background-color: rgb(74, 74, 74);
+  width: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  border-radius: 20%;
+}
+
+.score-light {
+  background-color: lightgray;
+  width: 80%;
+  height: 80%;
+  margin: 10%;
+  border-radius: 50%;
+}
+
+.answer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(74, 74, 74);
+  width: 7%;
+  height: 70%;
+  margin: 1%;
+  border-radius: 25% / 5%;
+}
+
+@media (max-width: 750px) {
+
+  :root {
+    --card-height: min(80vw * 1.5, 80vh);
+    --card-width: calc(var(--card-height) / 1.5);
+  }
+
+  .board {
+    flex-direction: column;
+    border-radius: 10% / 7%;
+  }
+
+  .options-column {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90%;
+    height: 7%;
+    margin: 1%;
+    border-radius: 5% /25%;
+  }
+
+  .code-input {
+    width: auto;
+    height: 80%;
+    margin: 0%;
+  }
+
+  .full-column {
+    flex-direction: row;
+    width: 90%;
+    height: 7%;
+  }
+
+  .guess-column {
+    flex-direction: row;
+    width: 60%;
+    height: 100%;
+    border-radius: 5% / 20%;
+  }
+
+  .score {
+    height: 100%;
+    width: auto;
+  }
+
+  .answer-column {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 70%;
+    height: 7%;
+    border-radius: 5% / 25%;
+  }
+
+  .start-game-button {
+    top: auto;
+    bottom: 1%;
+    right: 3%;
+    height: 7%;
+    width: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
