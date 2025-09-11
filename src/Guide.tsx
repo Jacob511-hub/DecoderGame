@@ -5,7 +5,7 @@ const Guide: React.FC = () => {
         <div className="guide">
             <div className="score-guide">
                 <img
-                    src="/images/ScoreGreen.png"
+                    src="./images/ScoreGreen.png"
                     style={{ height: "80%", marginRight: "10px" }}
                 />
                 <span className="guide-text">
@@ -14,7 +14,7 @@ const Guide: React.FC = () => {
             </div>
             <div className="score-guide">
                 <img
-                    src="/images/ScoreYellow.png"
+                    src="./images/ScoreYellow.png"
                     style={{ height: "80%", marginRight: "10px" }}
                 />
                 <span className="guide-text">

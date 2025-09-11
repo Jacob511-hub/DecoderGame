@@ -5,10 +5,10 @@ interface ScoreLightProps {
 }
 
 const colorToImage: Record<ScoreLightProps["color"], string> = {
-    green: "url(/images/ScoreGreen.png)",
-    yellow: "url(/images/ScoreYellow.png)",
-    red: "url(/images/ScoreRed.png)",
-    black: "url(/images/ScoreBlack.png)",
+    green: "url(./images/ScoreGreen.png)",
+    yellow: "url(./images/ScoreYellow.png)",
+    red: "url(./images/ScoreRed.png)",
+    black: "url(./images/ScoreBlack.png)",
 };
 
 const ScoreLight: React.FC<ScoreLightProps> = ({ color }) => {

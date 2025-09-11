@@ -11,7 +11,7 @@ const ConfirmButton: React.FC<ConfirmButtonProps> = ({ onClick, disabled }) => {
             <div
                 onClick={!disabled ? onClick : undefined}
                 style={{
-                    backgroundImage: "url(/images/Confirm.png)",
+                    backgroundImage: "url(./images/Confirm.png)",
                     width: '100%',
                     height: '100%',
                     backgroundSize: 'cover',

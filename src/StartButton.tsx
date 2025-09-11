@@ -7,8 +7,8 @@ interface StartButtonProps {
 
 const StartButton: React.FC<StartButtonProps> = ({ text, onClick }) => {
     const imageMap: Record<string, string> = {
-        Start: "url(/images/Start.png)",
-        Restart: "url(/images/Restart.png)",
+        Start: "url(./images/Start.png)",
+        Restart: "url(./images/Restart.png)",
     };
 
     return (
