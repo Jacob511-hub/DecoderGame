@@ -39,25 +39,6 @@
   overflow: hidden;
 }
 
-/* .board::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: inherit;
-  background-image: linear-gradient(
-    var(--rotate),
-    #ff5ddf,
-    #d338be
-  );
-  animation: spin 10s linear infinite;
-  z-index: 0;
-  padding: 0.8%;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-} */
-
 .guide {
   display: flex;
   flex-direction: row;
@@ -70,24 +51,6 @@
   border: 5px solid #5ddcff;
   border-radius: 2% / 25%;
 }
-
-/* .guide::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: inherit;
-  background-image: linear-gradient(
-    var(--rotate),
-    #5ddcff,
-    #38b1d3
-  );
-  z-index: 0;
-  padding: 0.4%;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-} */
 
 .guide-text {
   color: white;
