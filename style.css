@@ -208,7 +208,7 @@
   border-radius: 25% / 5%;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 1400px) {
 
   :root {
     --card-height: min(80vw * 1.5, 80vh);
