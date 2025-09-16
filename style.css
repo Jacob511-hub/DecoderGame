@@ -97,6 +97,15 @@
   box-sizing: border-box;
 }
 
+.confirm {
+  transition: filter 0.25s ease;
+}
+
+.confirm:hover:not(.disabled) {
+  filter: drop-shadow(0 0 10px rgba(32, 207, 255, 0.7))
+          drop-shadow(0 0 20px rgba(32, 207, 255, 0.5));
+}
+
 .options-column {
   display: flex;
   flex-direction: column;
