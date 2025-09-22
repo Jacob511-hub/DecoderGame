@@ -7,8 +7,8 @@ interface StartButtonProps {
 
 const StartButton: React.FC<StartButtonProps> = ({ text, onClick }) => {
     const imageMap: Record<string, string> = {
-        Start: "url(./images/Start.png)",
-        Restart: "url(./images/Restart.png)",
+        Start: `url(${process.env.PUBLIC_URL}/images/Start.png)`,
+        Restart: `url(${process.env.PUBLIC_URL}/images/Restart.png)`,
     };
 
     const glowColor =

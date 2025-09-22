@@ -5,8 +5,9 @@ const Guide: React.FC = () => {
         <div className="guide">
             <div className="score-guide">
                 <img
-                    src="./images/ScoreGreen.png"
+                    src={`${process.env.PUBLIC_URL}/images/ScoreGreen.png`}
                     style={{ height: "80%", marginRight: "10px" }}
+                    alt=""
                 />
                 <span className="guide-text">
                     Correct color in correct position
@@ -14,8 +15,9 @@ const Guide: React.FC = () => {
             </div>
             <div className="score-guide">
                 <img
-                    src="./images/ScoreYellow.png"
+                    src={`${process.env.PUBLIC_URL}/images/ScoreYellow.png`}
                     style={{ height: "80%", marginRight: "10px" }}
+                    alt=""
                 />
                 <span className="guide-text">
                     Correct color in wrong position

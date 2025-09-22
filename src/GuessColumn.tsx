@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import CodeInput from "./CodeInput";
 import { OptionsContext } from "./OptionsContext";
 
-const DEFAULT_IMAGE = "url(./images/CodeBlank.png)";
+const DEFAULT_IMAGE = `url(${process.env.PUBLIC_URL}/images/CodeBlank.png)`;
 const COLOR_IMAGES = [
-    "url(./images/CodeRed.png)",
-    "url(./images/CodeBlue.png)",
-    "url(./images/CodeYellow.png)",
-    "url(./images/CodeGreen.png)",
-    "url(./images/CodeOrange.png)",
-    "url(./images/CodePurple.png)"
+    `url(${process.env.PUBLIC_URL}/images/CodeRed.png)`,
+    `url(${process.env.PUBLIC_URL}/images/CodeBlue.png)`,
+    `url(${process.env.PUBLIC_URL}/images/CodeYellow.png)`,
+    `url(${process.env.PUBLIC_URL}/images/CodeGreen.png)`,
+    `url(${process.env.PUBLIC_URL}/images/CodeOrange.png)`,
+    `url(${process.env.PUBLIC_URL}/images/CodePurple.png)`,
 ];
 
 interface GuessColumnProps {
