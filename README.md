@@ -9,7 +9,7 @@ This is a browser game where players must decipher a solution in a limited numbe
 - This is a webpage designed to allow users to play a simple game where the objective is to, within 8 or fewer guesses, decipher a random combination of 4 inputs.
 - Users are told after each guess how many of their inputs were correct or in the wrong position, and using this information, they must narrow down the possible combinations of inputs in order to find the correct combination before they run out of guesses.
 
-![DecoderGameProjectPhoto1]()
+![DecoderGameProjectPhoto1](https://github.com/user-attachments/assets/34903f45-06c5-452f-901e-cc6454b492b3)
 
 ## Usage
 
@@ -19,7 +19,7 @@ This is a browser game where players must decipher a solution in a limited numbe
 - Upon selecting an input for all 4 circles, the checkmark button can be pressed to confirm your guess. The four smaller circles will light up either pink or light blue to indicate how many of your 4 inputs were correct. A light blue circle indicates that one of your inputs was the correct color in the correct spot. A pink circle indicates that your guess contains a color that is in the solution, but was not in the correct spot. The order of these score lights is not reflective of the order of the guessed inputs, so you cannot tell which inputs the individual scores are attributed to.
 - This process repeats until you either use up all 8 of your guesses or you guess the entire answer correctly, after which the answer is then revealed.
 
-![DecoderGameProjectPhoto2]()
+![DecoderGameProjectPhoto2](https://github.com/user-attachments/assets/e26c4238-8d55-4151-b6bc-6b8c0814d0ed)
 
 ## Source Code
 
