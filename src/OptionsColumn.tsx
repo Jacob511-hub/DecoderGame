@@ -14,6 +14,11 @@ const CODES = [
 const OptionsColumn: React.FC = () => {
     const { triggerColorSelect } = useContext(OptionsContext);
 
+    const handleDragStart = (e: React.DragEvent<HTMLDivElement>, colorId: number) => {
+        e.dataTransfer.setData("colorId", colorId.toString());
+        e.dataTransfer.effectAllowed = "copy";
+    };
+
     return (
         <div className="options-column">
             {CODES.map(({ id, src }) => (
@@ -21,6 +26,8 @@ const OptionsColumn: React.FC = () => {
                     key={id}
                     src={src}
                     onClick={() => triggerColorSelect?.(id)}
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, id)}
                 />
             ))}
         </div>

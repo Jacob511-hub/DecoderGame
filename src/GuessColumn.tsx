@@ -51,6 +51,22 @@ const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorS
         }
     };
 
+    const handleDrop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
+        if (isDisabled) return;
+        e.preventDefault();
+        const colorId = parseInt(e.dataTransfer.getData("colorId"), 10);
+        if (isNaN(colorId)) return;
+
+        const newGuesses = [...guessIds];
+        newGuesses[index] = colorId;
+        setGuessIds(newGuesses);
+    };
+
+    const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+        if (isDisabled) return;
+        e.preventDefault();
+    };
+
     useEffect(() => {
         if (!isDisabled) {
             registerColorSetter(setColorAtSelected);
@@ -70,23 +86,31 @@ const GuessColumn: React.FC<GuessColumnProps> = ({ onGuessChange, registerColorS
     }, [isDisabled]);
 
     return (
-        <div className="guess-column">
-            {guessIds.map((id, i) => (
-                <CodeInput
-                    key={i}
-                    src={id === null ? DEFAULT_IMAGE : COLOR_IMAGES[id]}
-                    onClick={!isDisabled ? () => handleGuessClick(i) : undefined}
-                    isSelected={selectedIdx === i}
-                />
-            ))}
-            <OptionsContext.Consumer>
-                {({ onOptionClick }) => {
-                    if (onOptionClick) onOptionClick(setColorAtSelected);
-                    return null;
-                }}
-            </OptionsContext.Consumer>
+    <div className="guess-column">
+      {guessIds.map((id, i) => (
+        <div
+          key={i}
+          onDragOver={handleDragOver}
+          onDrop={(e) => handleDrop(e, i)}
+          style={{ width: '100%' }}
+        >
+          <CodeInput
+            src={id === null ? DEFAULT_IMAGE : COLOR_IMAGES[id]}
+            onClick={!isDisabled ? () => handleGuessClick(i) : undefined}
+            isSelected={selectedIdx === i}
+            onDragOver={!isDisabled ? handleDragOver : undefined}
+            onDrop={!isDisabled ? (e) => handleDrop(e, i) : undefined}
+          />
         </div>
-    )
+      ))}
+      <OptionsContext.Consumer>
+        {({ onOptionClick }) => {
+          if (onOptionClick) onOptionClick(setColorAtSelected);
+          return null;
+        }}
+      </OptionsContext.Consumer>
+    </div>
+  );
 };
 
 export default GuessColumn;
