@@ -1,18 +1,23 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import OptionsColumn from "./OptionsColumn";
 import FullColumn from "./FullColumn";
 import AnswerColumn from "./AnswerColumn";
-import StartButton from "./StartButton";
-import { useAnswerArray } from "./AnswerArrayContext";
 import { OptionsContext, SetColorFunction } from "./OptionsContext";
 
-const Board: React.FC = () => {
-    const { generateAnswerArray } = useAnswerArray();
-    const [activeColumn, setActiveColumn] = useState(0);
-    const [gameOver, setGameOver] = useState(false);
-    const [gameStarted, setGameStarted] = useState(false);
-    const [resetCounter, setResetCounter] = useState(0);
+interface BoardProps {
+  gameStarted: boolean;
+  gameOver: boolean;
+  setGameOver: React.Dispatch<React.SetStateAction<boolean>>;
+  resetCounter: number;
+}
 
+const Board: React.FC<BoardProps> = ({
+    gameStarted,
+    gameOver,
+    setGameOver,
+    resetCounter,
+}) => {
+    const [activeColumn, setActiveColumn] = useState(0);
     const currentSetterRef = useRef<SetColorFunction | null>(null);
 
     const handleOptionClickSetter = (setter: SetColorFunction) => {
@@ -23,19 +28,9 @@ const Board: React.FC = () => {
         currentSetterRef.current?.(colorId);
     };
 
-    const handleStartGame = () => {
-        setGameStarted(true);
+    useEffect(() => {
         setActiveColumn(0);
-        setGameOver(false);
-    };
-
-    const handleRestartGame = () => {
-        generateAnswerArray();
-        setGameStarted(false);
-        setGameOver(false);
-        setActiveColumn(0);
-        setResetCounter((c) => c + 1);
-    };
+    }, [resetCounter, gameStarted]);
 
     return (
         <OptionsContext.Provider
@@ -45,13 +40,6 @@ const Board: React.FC = () => {
             }}
         >
             <div className="board">
-                {!gameStarted && (
-                    <StartButton text={"Start"} onClick={handleStartGame} />
-                )}
-                {gameStarted && (
-                    <StartButton text={"Restart"} onClick={handleRestartGame} />
-                )}
-
                 <OptionsColumn />
 
                 {[...Array(8)].map((_, i) => (
